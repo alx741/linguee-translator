@@ -1,3 +1,5 @@
+#! /usr/bin/env python3
+
 import sys
 import os
 from http import client
