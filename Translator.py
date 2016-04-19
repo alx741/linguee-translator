@@ -1,4 +1,5 @@
 import sys
+import os
 from http import client
 ##variables for the search query
 knownWord = ''
@@ -6,7 +7,10 @@ knownLanguage = ''
 translatingLanguage = ''
 
 if len(sys.argv) is not 4:
- print('error in arguments, format program as python translater.py knownWord knownLanguage translatingLanguage')
+    print('Usage: ' + os.path.basename(__file__) + ' word SOURCE TARGET')
+    print('\nSOURCE\n  Original Language')
+    print('\nTARGET\n  Target Language')
+    sys.exit(1)
 else:
  conn = client.HTTPConnection("www.linguee.com") #connect to their server
  conn.request("GET", "/"+str(sys.argv[2])+"-"+str(sys.argv[3])+"/search?query="+str(sys.argv[1])) #linguee is done entirely through the web with results based on the client's browser
